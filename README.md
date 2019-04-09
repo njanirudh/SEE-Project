@@ -1,4 +1,5 @@
 # SEE-Project
-Team members: Anirudh<br>
-              Raina<br>
-              Somesh
+Team members: <br>
+anirudh<br>
+Raina<br>
+Somesh
