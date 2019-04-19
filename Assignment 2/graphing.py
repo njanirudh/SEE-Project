@@ -44,13 +44,13 @@ if __name__ == "__main__":
     x_right , y_right     = text_reader("Text/right.txt")
 
     #create_csv("Text/start.txt")
-    create_csv("Text/forward.txt")
+    #create_csv("Text/forward.txt")
     #create_csv("Text/right.txt")
     #create_csv("Text/left.txt")
 
-    img = cv2.imread("/home/anirudh/Desktop/SEE/SEE-Project/Assignment 2/Results/Right/IMG_20190413_233532.jpg")
+    #img = cv2.imread("/home/anirudh/Desktop/SEE/SEE-Project/Assignment 2/Results/Right/IMG_20190413_233532.jpg")
     #img = cv2.imread("/home/anirudh/Desktop/SEE/SEE-Project/Assignment 2/Results/Start/IMG_20190413_223849.jpg")
-    #img = cv2.imread("/home/anirudh/Desktop/SEE/SEE-Project/Assignment 2/Results/Left/IMG_20190413_232209.jpg")
+    img = cv2.imread("/home/anirudh/Desktop/SEE/SEE-Project/Assignment 2/Results/Left/IMG_20190413_232209.jpg")
     #img = cv2.imread("/home/anirudh/Desktop/SEE/SEE-Project/Assignment 2/Results/Forward/IMG_20190413_225323.jpg")
 
     # Setting the axis size according to the sheet size of the map
@@ -70,11 +70,11 @@ if __name__ == "__main__":
     plt.scatter(x_left, y_left, alpha=1,s=1)
     plt.scatter(x_right, y_right, alpha=1,s=1)
 
-    plt.title('Scatter plot')
-    plt.xlabel('x')
-    plt.ylabel('y')
+    plt.title('End pose - Right')
+    plt.xlabel('x (mm)')
+    plt.ylabel('y (mm)')
 
-    #plt.savefig('right.png', dpi=300)
+    plt.savefig('right.png', dpi=300)
 
     plt.show()
 
