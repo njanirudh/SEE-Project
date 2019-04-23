@@ -1,7 +1,7 @@
 \documentclass[10pt,a4paper]{article}
 \usepackage[latin1]{inputenc}
-\usepackage{amsmath}
 \usepackage{amsfonts}
+\usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{color}
 \usepackage{graphicx}
@@ -10,14 +10,21 @@
 \usepackage{graphicx}
 \usepackage{array}
 \usepackage{float}
+\usepackage[tmargin=3cm,bmargin=2.5cm,lmargin=1.1cm,rmargin=1.5cm]{geometry}
 \hypersetup{
 	colorlinks=true,
-	linkcolor=blue,
+	linkcolor=black,
 	filecolor=magenta,
 	urlcolor=cyan,
 }
-\RequirePackage[left=01.1cm,top=3cm,right=1.5cm,bottom=2.5cm,nohead,nofoot]{geometry}
+\usepackage{sectsty}
 
+\sectionfont{\LARGE}
+\subsectionfont{\Large}
+\subsubsectionfont{\Large}
+\paragraphfont{\large}
+
+\setcounter{secnumdepth}{5}
 
 \newcolumntype{C}[1]{%
 	>{\vbox to 2.5ex\bgroup\vfill\centering\arraybackslash}%
@@ -25,55 +32,49 @@
 	<{\vskip-\baselineskip\vfill\egroup}}  
 
 \author{\vspace{0.4cm}
-	Anirudh N J \\\vspace{0.4cm}
-	Somesh Devagekar \\\vspace{0.8cm}
-	Raina Thomas}
+	\Large{Anirudh N J}\\\vspace{0.4cm}
+	\Large{Somesh Devagekar} \\\vspace{0.8cm}
+	\Large{Raina Thomas}}
 
 \title{
 	\vspace*{5cm}
-	\textbf{Scientific Experimentation and Evaluation}
+	\textbf{\Large{Scientific Experimentation and Evaluation}}
 	}
 	
-\date{\color{blue}April 10, 2019}			
+\date{\color{blue}April 17, 2019}			
 \begin{document}
-	
+
 \begin{titlepage}
 
 	\maketitle
 	
 \end{titlepage}
 
-\Large\textbf{\color{blue}LEGO NXT Project Implementation}
+	\Large
+	\tableofcontents
+	\newpage
 
+
+\LARGE{\textbf{\color{blue}Manual Motion Observation}}
+
+
+\section{Aim}
 \Large
-\begin{enumerate}[label=\Roman*]
-
-\item
-\vspace{0.5cm}
-\Large{\textbf{Aim}}\\
-
 The aim of this project is to construct a LEGO NXT differential drive robot and measure the observable end pose variation for three different trajectories: an arc to the left, driving straight and an arc to the right.
 \vspace{0.5cm}
 
 The experiment of measuring the end pose was done by measuring the pose using markers and Computer Vision.
    
 
-\vspace{0.5cm}
-\item
-\Large{\textbf{Experimental Setup}}\\
-
-\begin{enumerate}
+\section{Experimental Setup}
 	
-	\item
-	\textbf{Software Setup}\\
-	
-	\begin{enumerate}[label=(\roman*)]
-		\item
-		\textbf{Software Installation}\\
+	\subsection{Software Setup}
 		
+	\subsubsection{Software Installation}
+			
 		The following softwares were installed in the PC for driving the robot :
 			\vspace{0.3cm}
-			\begin{enumerate}[label=(\alph*)]
+			\begin{enumerate}
 				
 				\item
 				Java SE Development Kit 8 was installed in the Windows Operating System of the PC. The software was downloaded from the website :\\ \href{https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html}{https://www.oracle.com}
@@ -98,10 +99,9 @@ The experiment of measuring the end pose was done by measuring the pose using ma
 								
 			\end{enumerate}
 			
-			\item
-			\vspace{0.2cm}
-			\textbf{Programming the robot}\\
-			\begin{enumerate}[label=(\alph*)]
+			\subsubsection{Programming the robot}
+	
+			\begin{enumerate}
 				\item
 				The Lego NXT Java template code provided in the website below was modified for use in the robot.
 				\href{https://lea.hochschule-bonn-rhein-sieg.de/ilias.php?ref_id=571436&cmd=view&cmdClass=ilrepositorygui&cmdNode=t3&baseClass=ilrepositorygui}{https://lea.hochschule-bonn-rhein-sieg.de}
@@ -129,14 +129,8 @@ The experiment of measuring the end pose was done by measuring the pose using ma
 			\end{enumerate}
 			
 			
-	\end{enumerate}
-
 	
-	\vspace{0.3cm}
-	
-	\item
-	\Large{\textbf{Hardware Setup}}\\
-	
+	\subsection{Hardware Setup}	
 To reproduce the above experiment the following equipment are needed :
 \begin{enumerate}
     \item
@@ -192,16 +186,91 @@ The reference images of the DUT and the proposed marker tracking visualization a
 \caption{ Views of the DUT}
 \end{figure}
 
+\section{General Terms Formalization}
 
-\end{enumerate}
-\vspace{0.5cm}
-\newpage
-\item
-\Large{\textbf{Procedure}}\\
 
-\begin{enumerate}
-	\item
-	\Large{\textbf{Experimental Steps}}\\
+	\begin{itemize}
+		\item	
+		\textbf{Measurand :}
+		\begin{itemize}
+			\item
+			Pose (x-coordinate, y-coordinate, orientation)
+		\end{itemize}
+		
+		\item
+		\textbf{Measurement :}
+		\begin{itemize}
+			\item
+			Distance (mm)
+			\item
+			Angle (degrees)
+		\end{itemize}
+		\item
+		\textbf{Measuring Principle :}
+		\begin{itemize}
+			\item
+			Strain Gauge
+		\end{itemize} 
+		\item
+		\textbf{Measurement facility :}
+		\begin{itemize}
+			\item
+			PI hexapod
+			\item
+			Monocarrier drive
+			\item
+			Indentation tool
+			\item
+			Simulab complex tissue model
+			\item
+			ATI Mini40 force sensor
+			\item
+			EPOS2 motor controller
+		\end{itemize} 
+		\item
+		\textbf{Device Under Test (DUT):}
+		\begin{itemize}
+			\item
+			Tissue Analogue
+		\end{itemize} 
+		\item
+		\textbf{Sensitivity :}
+		\begin{itemize}
+			\item
+			Axial force resolution of 0.04N
+		\end{itemize} 
+		\item
+		\textbf{Measurement System :}
+		\begin{itemize}
+			\item
+			EPOS2 motor controller
+			\item
+			Indentation tool
+			\item
+			FT sensor
+			\item
+			NI DAQ
+		\end{itemize}
+		\item
+		\textbf{Meter :}
+		\begin{itemize}
+			\item
+			FT sensor
+			\item
+			NI DAQ
+		\end{itemize}
+		\item
+		\textbf{Measuring method: }
+		\begin{itemize}
+			\item
+			Displace the material using the indentation tool.
+			\item
+			Measure the applied force using FT sensor.
+		\end{itemize}
+\end{itemize}
+
+\section{Procedure}
+	\subsection{Experimental Steps}
 	
 \begin{enumerate}
 	\item
@@ -209,7 +278,7 @@ The reference images of the DUT and the proposed marker tracking visualization a
 	\item
 	Before beginning the experiment the camera should be calibrated and the obtained parameters should be used to compensate for the lens distortion and other errors in the image. 
 	\item
-	Two small markers should be attached on the flat surface of the robot, one on the front and one on the rear of the robot. The markers should be visible in the camera frame captured by the overhead camera. (The two markers should have different ID to distinguish between them)
+	Two small markers should be attached on the flat surface of the robot, one on the front and one on top of the origin of the robot. The markers should be visible in the camera frame captured by the overhead camera. (The two markers should have different ID to distinguish between them)
 	\item
     Using Computer-vision the two markers on the robot can be tracked and localized. The centre of the markers can be found and be used to calculate the offset from the actual robot origin using a scale or any other measuring device.
 	\item
@@ -230,13 +299,13 @@ The reference images of the DUT and the proposed marker tracking visualization a
 \end{figure}
 
 
-\item
-\Large{\textbf{Computer Vision Algorithm}}\\
-\begin{enumerate}[label=\roman*)]
+\subsection{Computer Vision Algorithm}
+
+\begin{enumerate}
 		\item
 		Preprocessing the image involves the following steps :
 		\vspace{0.2cm}
-		\begin{enumerate}[label=\alph*)]
+		\begin{enumerate}
 			\item
 			Camera calibration is done to find the intrinsic and extrinsic parameters of the camera.	These parameters are then used to remove the radial distortion from the image.
 			\item
@@ -255,15 +324,9 @@ The reference images of the DUT and the proposed marker tracking visualization a
 		The scripts that were written for the experiment along with the documentation of each of the function are given in the following repository. (\href{https://github.com/njanirudh/SEE-Project}{https://github.com/njanirudh/SEE-Project})
 \end{enumerate}
 
+\section{Observations}
 
-
-\end{enumerate}
-
-\item
-\vspace{0.5cm}
-\textbf{Observations}\\
-
-\textbf{Problems}
+\subsection{Problems}
 
 \begin{enumerate}
 	\item
@@ -329,11 +392,10 @@ The reference images of the DUT and the proposed marker tracking visualization a
 	
 	
 \end{enumerate}
-\newpage
-\vspace{0.5cm}
 
-\vspace{0.5cm}
-\textbf{Data Visualisation}\\
+
+\newpage
+\subsection{Data Visualisation}
 
 The origin of the original map (grid sheet) that was considered was at the top-left corner. However, the plots that have been displayed in this section have the origin in the bottom-left corner and hence the original images have been mirrored to fit the plot axes.
 
@@ -377,8 +439,6 @@ The scatter plot of the end pose of the robot after it moved in the right arc ha
 	\includegraphics[width=0.9\linewidth ]{right.png}
 	\caption{End Pose - Right}
 \end{figure}
-
-\end{enumerate}
 
 \end{enumerate}
 
