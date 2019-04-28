@@ -13,7 +13,7 @@
 \usepackage[tmargin=3cm,bmargin=2.5cm,lmargin=1.1cm,rmargin=1.5cm]{geometry}
 \hypersetup{
 	colorlinks=true,
-	linkcolor=black,
+	linkcolor=blue,
 	filecolor=magenta,
 	urlcolor=cyan,
 }
@@ -63,7 +63,7 @@
 The aim of this project is to construct a LEGO NXT differential drive robot and measure the observable end pose variation for three different trajectories: an arc to the left, driving straight and an arc to the right.
 \vspace{0.5cm}
 
-The experiment of measuring the end pose was done by measuring the pose using markers and Computer Vision.
+The experiment of measuring the end pose was done by measuring the pose using aruco markers and Computer Vision.
    
 
 \section{Experimental Setup}
@@ -123,7 +123,7 @@ The experiment of measuring the end pose was done by measuring the pose using ma
 				  	\label{Tab:Tcr}
 				\end{table}
 		\item
-		The NXT Device was connected to the PC via a USB Cable.	The modified code was compiled and run as an LeJOS NXT Program to create a .nxj file. This was automatically flashed into the NXT device that was connected to the PC.
+		The NXT Device was connected to the PC via a USB Cable. {\color{blue}The NXJ firmware was flashed into the device.} The modified code was compiled and run as an LeJOS NXT Program to create a .nxj file. This was automatically flashed into the NXT device that was connected to the PC.
 				
 				
 			\end{enumerate}
@@ -131,7 +131,7 @@ The experiment of measuring the end pose was done by measuring the pose using ma
 			
 	
 	\subsection{Hardware Setup}	
-To reproduce the above experiment the following equipment are needed :
+To reproduce the experiment the following equipments are required :
 \begin{enumerate}
     \item
     White A0 Grid Sheet
@@ -151,13 +151,13 @@ The general steps to setup the experiment are as following :
     \item
     Place the White A0 sheet on a flat surface.  Try to remove any bends in the sheet and keep the paper as flat as possible. This will be called the 'map' on which the robot will move on. The measurement system is made of the robot, scale, camera, aruco markers and a paper. 
     \item
-    Draw the template drawing of the "floor space" taken by the robot as shown in the figure. Concept of "Behavior-shaping constraint" is used to prevent wrong initial placement of the robot.
+    Draw the template drawing of the "floor space" taken by the robot as shown in the {\color{blue}figure}. Concept of 'Behavior-shaping constraint'\footnote{\color{blue}Behavior shaping constraint : It is a type of design constraint to prevent the user from using the system in a way that it is not intended to be used in. In the case of the template given, the triangle prevents the robot to be placed in the reverse direction.} is used to prevent wrong initial placement of the robot.
     
     
     \begin{figure}[H]
 	\centering
-    \includegraphics[width=0.6\linewidth ]{Template.png}
-    \caption{ Template drawing of the Map along with dimensions}
+    \includegraphics[width=0.6\linewidth ]{Template.jpeg}
+    \caption{ Template of the Map}
     \end{figure}
 
 	\item
@@ -171,9 +171,11 @@ The general steps to setup the experiment are as following :
     \item
     We assumed that the driving axle is towards the front(leading edge) of the robot and that the robot origin lies in the centre of the driving axle.
     \item
-    Place the robot on the A0 sheet over the marked template.
+    The two aruco markers on the robot are placed as ahown in the figure {\color{blue}in such a way that one of the markers lies directly on top of the origin of the robot.}
     \item
-	The measurands are the initial and end positions and the angles between the center of the robot and the tail of the robot.
+    Place the robot on the A0 sheet over the marked template {\color{blue}in such a way that the castor wheel is turned outwards from the robot.}
+    \item
+	The measurands are the {\color{blue}coordinates of the robot's markers on the camera.}
     
 \end{enumerate}
 \vspace{0.5cm}
@@ -185,6 +187,34 @@ The reference images of the DUT and the proposed marker tracking visualization a
 \includegraphics[width=0.9\linewidth ]{pose.jpeg}
 \caption{ Views of the DUT}
 \end{figure}
+
+\subsection{\color{blue}Camera Calibration}
+
+{\color{blue}
+Calibration in computer vision is the method to find the intrinsic and extrinsic parameters of a particular camera. The intrinsic parameters of a camera deals with the physical qualities of the camera like focal length , skew , distorsion etc. Whereas, the extrinsic parameters of the camera deals with finding the pose of the external world with respect to the camera.\\
+
+The general methods to perform the calibration are as follows.
+
+\begin{enumerate}
+	\item
+	Download the image of the checkerboard pattern from the link given below.
+	\href{https://boofcv.org/images/2/23/Calibration_letter_chessboard_7x5.png}{https://boofcv.org/images/2/23/Calibration\_letter\_chessboard\_7x5.png}
+	
+	\item
+	Take a printout of the pattern on an A4 sheet and mount it on a rigid surface. This will be called as the target.
+	
+	\item
+	Use the camera to be used in the setup to take pictures of the target at different orientation and distances.
+	
+	\item
+	Use the OpenCV code given in the below link to get the calibration parameters for the camera. 
+	\href{https://docs.opencv.org/3.4.3/dc/dbb/tutorial_py_calibration.html}{https://docs.opencv.org/3.4.3/dc/dbb/tutorial\_py\_calibration.html}
+	
+	\item
+	The calibration parameters that are found will be used for removing the errors like barrel, radial distorsion and also to find the precise 3D pose of the marker in the image.
+
+
+\end{enumerate}
 
 \section{General Terms Formalization}
 
@@ -209,72 +239,48 @@ The reference images of the DUT and the proposed marker tracking visualization a
 		\textbf{Measuring Principle :}
 		\begin{itemize}
 			\item
-			Strain Gauge
+			Computer Vision
 		\end{itemize} 
 		\item
 		\textbf{Measurement facility :}
 		\begin{itemize}
 			\item
-			PI hexapod
-			\item
-			Monocarrier drive
-			\item
-			Indentation tool
-			\item
-			Simulab complex tissue model
-			\item
-			ATI Mini40 force sensor
-			\item
-			EPOS2 motor controller
+			Camera
 		\end{itemize} 
 		\item
 		\textbf{Device Under Test (DUT):}
 		\begin{itemize}
 			\item
-			Tissue Analogue
-		\end{itemize} 
-		\item
-		\textbf{Sensitivity :}
-		\begin{itemize}
-			\item
-			Axial force resolution of 0.04N
+			Lego NXT
 		\end{itemize} 
 		\item
 		\textbf{Measurement System :}
 		\begin{itemize}
 			\item
-			EPOS2 motor controller
+			Grid Sheet
 			\item
-			Indentation tool
+			Markers
 			\item
-			FT sensor
-			\item
-			NI DAQ
-		\end{itemize}
-		\item
-		\textbf{Meter :}
-		\begin{itemize}
-			\item
-			FT sensor
-			\item
-			NI DAQ
+			Camera
 		\end{itemize}
 		\item
 		\textbf{Measuring method: }
 		\begin{itemize}
 			\item
-			Displace the material using the indentation tool.
+			Run the robot on the grid sheet as explained in the next section.
 			\item
-			Measure the applied force using FT sensor.
+			Capture images using a fixed camera of the entire sheet at the starting position and ending position of the robot.
+			\item
+			Find the pose of the robot by using the Computer Vision algorithm on the images captured.
 		\end{itemize}
 \end{itemize}
-
+}
 \section{Procedure}
 	\subsection{Experimental Steps}
 	
 \begin{enumerate}
 	\item
-	For this experiment the camera should be placed rigidly directly above the experiment setup such that the full map is visible in the camera frame. 
+	For this experiment, the camera should be placed rigidly directly above the experiment setup such that the full map is visible in the camera frame. 
 	\item
 	Before beginning the experiment the camera should be calibrated and the obtained parameters should be used to compensate for the lens distortion and other errors in the image. 
 	\item
@@ -286,7 +292,7 @@ The reference images of the DUT and the proposed marker tracking visualization a
 	\item
 	The initial pose and the final pose can be found by CV and position and pose in the required form can be extracted.
 	\item
-	20 measurements would be performed for each trajectory. Mean and standard deviation will be computed from the measurement. These measured values would be used to compute the accuracy and precision of the pose variation. 
+	20 measurements would be performed for each {\color{blue}end point of the trajectory}. Mean and standard deviation will be computed from the measurement. These measured values would be used to compute the accuracy and precision of the pose variation. 
 	
 \end{enumerate}
 
@@ -295,7 +301,7 @@ The reference images of the DUT and the proposed marker tracking visualization a
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.2\linewidth ]{marker.png}
-	\caption{ Example Aruco marker for computer vision}
+	\caption{ Example of Aruco marker used for computer vision}
 \end{figure}
 
 
@@ -352,10 +358,15 @@ The reference images of the DUT and the proposed marker tracking visualization a
 	\item
 	Difference in the starting position of the robot during the experiment caused variations in the end pose of the robot.
 	\item
-	Mechanical adjustments performed on the DUT during the ecperiment affected the end poses.
+	Mechanical adjustments performed on the DUT during the experiment affected the end poses.
+	\item
+	{\color{blue}Pressing the start button of the robot at its start position also caused slight changes in the start pose.}
 	\item
 	Errors that occured due to the markers are given below:
-	\begin{enumerate}[label=(\roman*)]
+	\begin{enumerate}
+		\item
+		{\color{blue}A major source of error in the case of this experiment is that the compensation for parallax error when considering the markers is not done. This might cause the actual position of the marker corners to be slightly deviated from the result given without the parallax compensation.}
+		
 		\item
 		The marker placed at the front of the robot gets hidden at times when the robot moves to the left. This prevents the camera from detecting the marker.
 		
