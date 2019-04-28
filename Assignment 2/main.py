@@ -169,7 +169,7 @@ if __name__ == "__main__":
     finder.set_vehicle_marker_id(46,47)
 
     image = finder.process_image(test_img)
-    cv2.imwrite("Results/Forward/frame_1.jpg", image)
+    cv2.imwrite("Results_1/Forward/frame_1.jpg", image)
     finder.get_output()
 
     # webcam = WebcamVideoStream().start()
