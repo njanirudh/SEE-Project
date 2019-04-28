@@ -48,11 +48,11 @@ def create_csv(path):
 
 def drawArrow(A, B):
     plt.arrow(A[0], A[1], B[0] - A[0], B[1] - A[1],
-              length_includes_head=False,lw = 1,width = 0.3)
+              length_includes_head=False, head_width=0.05, head_length=0.1, fc='k', ec='k')
 
 if __name__ == "__main__":
 
-    SCALE_FACTOR = 2
+    SCALE_FACTOR = 1
 
     start_back_marker, start_front_marker     = text_reader("Text/start.txt")
     forward_back_marker, forward_front_marker = text_reader("Text/forward.txt")
@@ -96,23 +96,35 @@ if __name__ == "__main__":
     plt.scatter(left_back_marker[0], left_back_marker[1], alpha=1,s=1)
     plt.scatter(right_back_marker[0], right_back_marker[1], alpha=1,s=1)
 
-    plt.scatter(start_front_marker[0], start_front_marker[1], alpha=1 ,s=1)
-    plt.scatter(forward_front_marker[0], forward_front_marker[1], alpha=1 ,s=1)
-    plt.scatter(left_front_marker[0], left_front_marker[1], alpha=1,s=1)
-    plt.scatter(right_front_marker[0], right_front_marker[1], alpha=1,s=1)
+    # plt.scatter(start_front_marker[0], start_front_marker[1], alpha=1 ,s=1)
+    # plt.scatter(forward_front_marker[0], forward_front_marker[1], alpha=1 ,s=1)
+    # plt.scatter(left_front_marker[0], left_front_marker[1], alpha=1,s=1)
+    # plt.scatter(right_front_marker[0], right_front_marker[1], alpha=1,s=1)
 
     # Drawing the pose arrow
 
     for i in range(len(forward_front_marker[0])-1):
         drawArrow([forward_back_marker[0][i], forward_back_marker[1][i]],
               [forward_front_marker[0][i],forward_front_marker[1][i]])
+    #
+    # for i in range(len(right_front_marker[0])-1):
+    #     drawArrow([right_back_marker[0][i], right_back_marker[1][i]],
+    #           [right_front_marker[0][i],right_front_marker[1][i]])
+
+    # for i in range(len(left_front_marker[0])-1):
+    #     drawArrow([left_back_marker[0][i], left_back_marker[1][i]],
+    #           [left_front_marker[0][i],left_front_marker[1][i]])
+
+    # for i in range(len(start_front_marker[0])-1):
+    #     drawArrow([start_back_marker[0][i], start_back_marker[1][i]],
+    #           [start_front_marker[0][i],start_front_marker[1][i]])
 
 
-    plt.title('End pose - Right')
+    plt.title('End pose - Straight')
     plt.xlabel('x (mm)')
     plt.ylabel('y (mm)')
 
-    plt.savefig('start.png', dpi=1000)
+    plt.savefig('straight.png', dpi=1000)
 
     plt.show()
 
