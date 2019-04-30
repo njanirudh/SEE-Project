@@ -47,8 +47,11 @@ def create_csv(path):
                   math.degrees(angle(get_vector(val["back"],val["front"]),(952,0))))
 
 def drawArrow(A, B):
+    #plt.arrow(A[0], A[1], B[0] - A[0], B[1] - A[1],
+    #          length_includes_head=False, head_width=0.05, head_length=0.1, fc='k', ec='k')
     plt.arrow(A[0], A[1], B[0] - A[0], B[1] - A[1],
-              length_includes_head=False, head_width=0.05, head_length=0.1, fc='k', ec='k')
+              head_width=3, length_includes_head=True, head_length=3.0,
+              fc='red', ec='black',width = 0.01)
 
 if __name__ == "__main__":
 
