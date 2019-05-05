@@ -418,7 +418,7 @@ The origin of the original map (grid sheet) that was considered was at the top-l
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.9\linewidth ]{front.png}
+	\includegraphics[width=0.9\linewidth ]{all.png}
 	\caption{Initial Pose}
 \end{figure}
 
@@ -428,9 +428,11 @@ The scatter plot of the end pose of the robot after it moved forward has been di
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.9\linewidth ]{forward.png}
+	\includegraphics[width=0.9\linewidth ]{straight.png}
 	\caption{End Pose - Forward}
 \end{figure}
+
+
 
 \newpage
 \item
@@ -453,11 +455,22 @@ The scatter plot of the end pose of the robot after it moved in the right arc ha
 	\caption{End Pose - Right}
 \end{figure}
 
+
+
+\newpage
+\item
+The plot of the poses of the robot has been displayed in the figure below.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\linewidth ]{all_wo_bg.png}
+	\caption{All Poses}
+\end{figure}
+
 \end{enumerate}
 
 \newpage
-
-\section{Task 2 : Statistical Evaluation of the Previous Experiment}
+\section{Task 2 : Statistical Evaluation}
 
 \subsection{Aim}
 \Large
@@ -466,16 +479,85 @@ The objective of this task is to characterise the observed behaviour from the pr
 
 \subsection{Procedure}
 
-\begin{enumerate}
-	\item
-	The data obtained from the previous experiment is used to fit to a Gaussian probability distribution. 
-	\item
-	The algorithm 
-\end{enumerate}
-		
-		
+
+The data obtained from the previous experiment is used to fit to a Gaussian probability distribution by executing an algorithm in Python. The code used can be found in the github repository \href{https://github.com/njanirudh/SEE-Project/tree/dev}{https://github.com/njanirudh/SEE-Project/tree/dev}
 
 
+\subsection{Observations}
+		
+Given below are the curves for Gaussian fit from the observed data.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\linewidth ]{x_forward.png}
+	\caption{Fit for X Coordinate - Forward}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\linewidth ]{y_forward.png}
+	\caption{Fit for Y Coordinate - Forward}
+\end{figure}	
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\linewidth ]{theta_forward.png}
+	\caption{Fit for angle - Forward}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\linewidth ]{x_left.png}
+	\caption{Fit for X Coordinate - Left}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\linewidth ]{y_left.png}
+	\caption{Fit for Y Coordinate - Left}
+\end{figure}	
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\linewidth ]{theta_left.png}
+	\caption{Fit for angle - Left}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\linewidth ]{x_right.png}
+	\caption{Fit for X Coordinate - Right}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\linewidth ]{y_right.png}
+	\caption{Fit for Y Coordinate - Right}
+\end{figure}	
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\linewidth ]{theta_right.png}
+	\caption{Fit for angle - Right}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\linewidth ]{x_start.png}
+	\caption{Fit for X Coordinate - Start Position}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\linewidth ]{y_start.png}
+	\caption{Fit for Y Coordinate - Start Position}
+\end{figure}	
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\linewidth ]{theta_start.png}
+	\caption{Fit for angle - Start Position}
+\end{figure}
 
 
 \end{document}
