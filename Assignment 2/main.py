@@ -20,7 +20,7 @@ class MarkerFinder :
 
         # Setting parameters for finding the Aruco Marker.
         self.parameters = aruco.DetectorParameters_create()
-        self.parameters.adaptiveThreshWinSizeStep = 2
+        self.parameters.adaptiveThreshWinSizeStep = 1
         self.parameters.adaptiveThreshConstant = 10
         self.parameters.cornerRefinementMethod = cv2.aruco.CORNER_REFINE_CONTOUR
 
@@ -72,6 +72,7 @@ class MarkerFinder :
         # lists of ids and the corners belonging to each marker
         corners, ids, rejectedImgPoints = aruco.detectMarkers(gray, self.aruco_dict,
                                                               parameters=self.parameters)
+        print(ids)
         if np.all(ids != None):
 
             try:
@@ -162,15 +163,15 @@ class MarkerFinder :
 
 if __name__ == "__main__":
 
-    test_img = cv2.imread("Markers/test_05.jpg")
+    test_img = cv2.imread("/home/anirudh/Desktop/SEE/SEE-Project/Assignment 03/images/Photos_downloaded_by_AirDroid/IMG_20190505_114809__01.jpg")
 
     finder = MarkerFinder()
     finder.set_sheet_corner_id(0,1,2,3)
     finder.set_vehicle_marker_id(46,47)
 
     image = finder.process_image(test_img)
-    cv2.imwrite("Results_1/Forward/frame_1.jpg", image)
-    finder.get_output()
+    cv2.imwrite("/home/anirudh/Desktop/SEE/SEE-Project/Assignment 03/images/map.jpg", image)
+    #finder.get_output()
 
     # webcam = WebcamVideoStream().start()
     #
