@@ -10,6 +10,8 @@
 \usepackage{graphicx}
 \usepackage{array}
 \usepackage{float}
+\usepackage{pdfpages}
+
 \usepackage[raggedright]{titlesec}
 \usepackage[tmargin=3cm,bmargin=2.5cm,lmargin=1.1cm,rmargin=1.5cm]{geometry}
 \hypersetup{
@@ -43,7 +45,7 @@
 	\textbf{\Large{Scientific Experimentation and Evaluation}}
 	}
 	
-\date{April 23, 2019}			
+\date{May 01, 2019}			
 \begin{document}
 
 \begin{titlepage}
@@ -68,7 +70,7 @@ The aim of this project is to construct a LEGO NXT differential drive robot and 
 The experiment of measuring the end pose was done by measuring the pose using aruco markers and Computer Vision.
    
 
-\subsection{Experimental Setup}
+\subsubsection{Experimental Setup}
 	
 	\subsubsection{Software Setup}
 		\vspace{0.3cm}
@@ -158,26 +160,26 @@ The general steps to setup the experiment are as following :
     
     \begin{figure}[H]
 	\centering
-    \includegraphics[width=0.6\linewidth ]{map_small.png}
-    \caption{ Template of the Map}
+    \includegraphics[width=0.6\linewidth ]{Apparatus/map_small.png}
+    \caption{ Template of the map}
     \end{figure}    
       
     \begin{figure}[H]
     	\centering
-    	\includegraphics[width=0.6\linewidth ]{camera_placement.png}
-    	\caption{Top view of the Experimental Setup without camera}
+    	\includegraphics[width=0.6\linewidth ]{Apparatus/camera_placement.png}
+    	\caption{Top view of the experimental setup without camera}
     \end{figure}
     
     \begin{figure}[H]
     	\centering
-    	\includegraphics[width=0.6\linewidth ]{experiment_apparatus_01_small.png}
-    	\caption{Top view of the Experimental Setup}
+    	\includegraphics[width=0.6\linewidth ]{Apparatus/experiment_apparatus_01_small.png}
+    	\caption{Top view of the experimental setup}
     \end{figure}
     
     \begin{figure}[H]
      	\centering
-     	\includegraphics[width=0.55\linewidth ]{apparatus_front_view.png}
-     	\caption{Front view of the Experimental Setup}
+     	\includegraphics[width=0.55\linewidth ]{Apparatus/apparatus_front_view.png}
+     	\caption{Front view of the experimental setup}
     \end{figure}
     
 	\item
@@ -204,7 +206,7 @@ The reference images of the DUT and the proposed marker tracking visualization a
 
 \begin{figure}[h]
 	\centering
-\includegraphics[width=0.9\linewidth ]{pose.jpeg}
+\includegraphics[width=0.9\linewidth ]{Apparatus/pose.jpeg}
 \caption{ Views of the DUT}
 \end{figure}
 
@@ -320,7 +322,7 @@ The general methods to perform the calibration are as follows.
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.2\linewidth ]{marker.png}
+	\includegraphics[width=0.2\linewidth ]{Extra/marker.png}
 	\caption{ Example of Aruco marker used for computer vision}
 \end{figure}
 
@@ -337,7 +339,7 @@ The general methods to perform the calibration are as follows.
 			\item
 			The aruco markers on the four corners are then used to perform perspective transformation. This helps in removing minor skews in the image.
 			\item
-			Using the four corners of the sheet, the area of the sheet is cropped.			
+			The four markers on the corners are then used to crop the image.			
 		\end{enumerate}
 		\vspace{0.3cm}
 		\item
@@ -347,8 +349,18 @@ The general methods to perform the calibration are as follows.
 		\item
 		The marker positions are in pixels since it is directly calculated from the image. A transformation is performed on the pixel coordinates to convert it into 'millimeter' coordinates of the map.
 		\item
-		The scripts that were written for the experiment along with the documentation of each of the function are given in the following repository. (\href{https://github.com/njanirudh/SEE-Project}{https://github.com/njanirudh/SEE-Project})
+		The scripts written for the experiment along with the documentation of each of the function are given in the following repository. (\href{https://github.com/njanirudh/SEE-Project}{https://github.com/njanirudh/SEE-Project})
 \end{enumerate}
+
+% \newpage
+% \begin{figure}[h]
+% 	\centering
+% 	\includegraphics[width=]{Extra/pipeline.png}
+% 	\caption{Computer vision algorithm pipeline}
+% \end{figure}
+
+% \newpage
+\includepdf{Extra/pipeline.png}
 
 \subsection{Observations}
 
@@ -394,7 +406,7 @@ The general methods to perform the calibration are as follows.
 		
 		\begin{figure}[h]
 			\centering
-			\includegraphics[width=0.35\linewidth ]{hidden_marker.png}
+			\includegraphics[width=0.35\linewidth ]{Extra/hidden_marker.png}
 			\caption{ Hidden marker}
 		\end{figure}
 		
@@ -405,7 +417,7 @@ The general methods to perform the calibration are as follows.
 		
 		\begin{figure}[H]
 			\centering
-			\includegraphics[width=0.35\linewidth ]{marker_detection_error.png}
+			\includegraphics[width=0.35\linewidth ]{Extra/marker_detection_error.png}
 			\caption{Bounding Box Error}
 		\end{figure}
 		
@@ -414,7 +426,7 @@ The general methods to perform the calibration are as follows.
 		
 		\begin{figure}[H]
 			\centering
-			\includegraphics[width=0.45\linewidth ]{skew.png}
+			\includegraphics[width=0.45\linewidth ]{Extra/skew.png}
 			\caption{Skewed Marker}
 		\end{figure}
 		
@@ -436,7 +448,7 @@ The origin of the original map (grid sheet) that was considered was at the top-l
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.9\linewidth ]{all.png}
+	\includegraphics[width=0.9\linewidth ]{Pose/all.png}
 	\caption{Initial Pose}
 \end{figure}
 
@@ -446,7 +458,7 @@ The scatter plot of the end pose of the robot after it moved forward has been di
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.9\linewidth ]{straight.png}
+	\includegraphics[width=0.9\linewidth ]{Pose/straight.png}
 	\caption{End Pose - Forward}
 \end{figure}
 
@@ -458,7 +470,7 @@ The scatter plot of the end pose of the robot after it moved in the left arc has
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.9\linewidth ]{left.png}
+	\includegraphics[width=0.9\linewidth ]{Pose/left.png}
 	\caption{End Pose - Left}
 \end{figure}
 
@@ -469,7 +481,7 @@ The scatter plot of the end pose of the robot after it moved in the right arc ha
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.9\linewidth ]{right.png}
+	\includegraphics[width=0.9\linewidth ]{Pose/right.png}
 	\caption{End Pose - Right}
 \end{figure}
 
@@ -481,7 +493,7 @@ The plot of the poses of the robot has been displayed in the figure below.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.9\linewidth ]{all_wo_bg.png}
+	\includegraphics[width=0.9\linewidth ]{Pose/all_wo_bg.png}
 	\caption{All Poses}
 \end{figure}
 
@@ -507,73 +519,73 @@ Given below are the curves for Gaussian fit from the observed data.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.8\linewidth ]{x_forward.png}
+	\includegraphics[width=0.8\linewidth ]{Graphs/Forward-X.jpg}
 	\caption{Fit for X Coordinate - Forward}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.9\linewidth ]{y_forward.png}
+	\includegraphics[width=0.9\linewidth ]{Graphs/Forward-Y.jpg}
 	\caption{Fit for Y Coordinate - Forward}
 \end{figure}	
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.9\linewidth ]{theta_forward.png}
+	\includegraphics[width=0.9\linewidth ]{Graphs/Forward-Angle.jpg}
 	\caption{Fit for angle - Forward}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.8\linewidth ]{x_left.png}
+	\includegraphics[width=0.8\linewidth ]{Graphs/Left-X.jpg}
 	\caption{Fit for X Coordinate - Left}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.8\linewidth ]{y_left.png}
+	\includegraphics[width=0.8\linewidth ]{Graphs/Left-Y.jpg}
 	\caption{Fit for Y Coordinate - Left}
 \end{figure}	
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.8\linewidth ]{theta_left.png}
+	\includegraphics[width=0.8\linewidth ]{Graphs/Left-Angle.jpg}
 	\caption{Fit for angle - Left}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.8\linewidth ]{x_right.png}
+	\includegraphics[width=0.8\linewidth ]{Graphs/Right-X.jpg}
 	\caption{Fit for X Coordinate - Right}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.8\linewidth ]{y_right.png}
+	\includegraphics[width=0.8\linewidth ]{Graphs/Right-Y.jpg}
 	\caption{Fit for Y Coordinate - Right}
 \end{figure}	
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.8\linewidth ]{theta_right.png}
+	\includegraphics[width=0.8\linewidth ]{Graphs/Right-Angle.jpg}
 	\caption{Fit for angle - Right}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.8\linewidth ]{x_start.png}
+	\includegraphics[width=0.8\linewidth ]{Graphs/Start-X.jpg}
 	\caption{Fit for X Coordinate - Start Position}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.8\linewidth ]{y_start.png}
+	\includegraphics[width=0.8\linewidth ]{Graphs/Start-Y.jpg}
 	\caption{Fit for Y Coordinate - Start Position}
 \end{figure}	
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.8\linewidth ]{theta_start.png}
+	\includegraphics[width=0.8\linewidth ]{Graphs/Start-Angle.jpg}
 	\caption{Fit for angle - Start Position}
 \end{figure}
 
