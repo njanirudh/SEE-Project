@@ -158,10 +158,28 @@ The general steps to setup the experiment are as following :
     
     \begin{figure}[H]
 	\centering
-    \includegraphics[width=0.6\linewidth ]{Template.jpeg}
+    \includegraphics[width=0.6\linewidth ]{map_small.png}
     \caption{ Template of the Map}
+    \end{figure}    
+      
+    \begin{figure}[H]
+    	\centering
+    	\includegraphics[width=0.6\linewidth ]{camera_placement.png}
+    	\caption{Top view of the Experimental Setup without camera}
     \end{figure}
-
+    
+    \begin{figure}[H]
+    	\centering
+    	\includegraphics[width=0.6\linewidth ]{experiment_apparatus_01_small.png}
+    	\caption{Top view of the Experimental Setup}
+    \end{figure}
+    
+    \begin{figure}[H]
+     	\centering
+     	\includegraphics[width=0.55\linewidth ]{apparatus_front_view.png}
+     	\caption{Front view of the Experimental Setup}
+    \end{figure}
+    
 	\item
 	Four aruco markers of different ids are used to find the corners of the grid sheet. The aruco markers are aligned such that the first corner of the marker which is detected by the CV algorithm overlaps with the corner of the sheet.
 	\item
@@ -480,7 +498,7 @@ The objective of this task is to characterise the observed behaviour from the pr
 \subsection{Procedure}
 
 
-The data obtained from the previous experiment is used to fit to a Gaussian probability distribution by executing an algorithm in Python. The code used can be found in the github repository \href{https://github.com/njanirudh/SEE-Project/tree/dev}{https://github.com/njanirudh/SEE-Project/tree/dev}
+The data obtained from the previous experiment is used to fit to a Gaussian probability distribution by executing an algorithm in Python. The code used for this can be found in the github repository \href{https://github.com/njanirudh/SEE-Project/tree/dev}{https://github.com/njanirudh/SEE-Project/tree/dev}
 
 
 \subsection{Observations}
@@ -559,7 +577,7 @@ Given below are the curves for Gaussian fit from the observed data.
 	\caption{Fit for angle - Start Position}
 \end{figure}
 
-
+When analysing the data with respect to the executed motions, the characteristic of the data that is established here Precision. Since we do not know the exact destination to which the robot is moving to, we would not be able to measure the accuracy with the current data.
 \end{document}
 
 
