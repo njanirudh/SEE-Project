@@ -40,13 +40,14 @@ class MarkerFinder :
         self.sheet_tr = tr
         self.sheet_br = br
 
-    def calibrate_camera(self,t_vec , r_vec):
+    def calibrate_camera(self,t_vec , r_vec,camera_mat):
         """
         Setting the calibration parameters of the camera
         :param t_vec: Translation vector
         :param r_vec: Rotation vector
         :return:  None
         """
+        self.camera_mat = camera_mat
         self.t_vec = t_vec
         self.r_vec = r_vec
 
@@ -57,6 +58,7 @@ class MarkerFinder :
         :param v_id_back: Robot back marker id
         :return: None
         """
+
         self.vehicle_id_f = v_id_front
         self.vehicle_id_b = v_id_back
 
@@ -122,6 +124,11 @@ class MarkerFinder :
                                                         v_corners[index_vehicle_f][0][1],
                                                         v_corners[index_vehicle_f][0][2],
                                                         v_corners[index_vehicle_f][0][3])
+
+                    # Removing errors using intrensic and extrensic matrix
+                    warped = cv2.undistort(warped, self.camera_mat)
+                    warped = cv2.projectPoints([pnts, self.b_marker_centre, self.f_marker_centre], self.r_vec,
+                                               self.t_vec, self.camera_mat)
 
                     # Drawing the line from origin to robot markers
                     cv2.line(warped,(0,0),self.f_marker_centre,(255,0,255),3)

@@ -48,51 +48,61 @@ def run_pca(data):
     return  pca_data.T[0]
 
 def draw_gaussian(x,y,theta):
-
+    name = "Right"
     # X_Straight
     x_mean = np.mean(x)
     x_var = np.var(x)
 
-    plt.hist(x[np.newaxis].T, bins=15, density=True, color='y')
+    plt.hist(x[np.newaxis].T, bins='auto', density=True, color='y')
     x_std = np.sqrt(x_var)
     x_right = np.linspace(x_mean - 3 * x_std, x_mean + 3 * x_std, 20)
     plt.plot(x_right, stats.norm.pdf(x_right, x_mean, x_std))
-    plt.title("X-Straight")
-    plt.xlabel('X-Straight in mm')
-    plt.ylabel('number of counts')
+    plt.title("X-"+name)
+    plt.xlabel('X-'+name+' in mm')
+    plt.ylabel('probability density')
     plt.grid()
-    plt.show()
+    #plt.show()
+    plt.savefig("Graphs/"+name+"-X.jpg")
+    plt.close()
 
     # y
     y_mean = np.mean(y)
     y_var = np.var(y)
-    plt.hist(y[np.newaxis].T, bins=15, density=True, color='r')
+    plt.hist(y[np.newaxis].T, bins='auto', density=True, color='r')
     y_std = np.sqrt(y_var)
     y_left = np.linspace(y_mean - 3 * y_std, y_mean + 3 * y_std, 20)
     plt.plot(y_left, stats.norm.pdf(y_left, y_mean, y_std))
-    plt.title("Y-Straight")
-    plt.xlabel('Y-Straight in mm')
-    plt.ylabel('number of counts')
+    plt.title("Y-"+name)
+    plt.xlabel('Y-'+name+' in mm')
+    plt.ylabel('probability density')
     plt.grid()
     # plt.xlim([450,600])
-    plt.show()
+    #plt.show()
+    plt.savefig("Graphs/"+name+"-Y.jpg")
+    plt.close()
 
     # theta
     theta_mean = np.mean(theta)
     theta_var = np.var(theta)
-    plt.hist(theta[np.newaxis].T, bins=15, density=True, color='g')
+    plt.hist(theta[np.newaxis].T, bins='auto', density=True, color='g')
     theta_std = np.sqrt(theta_var)
     theta_left = np.linspace(theta_mean - 3 * theta_std, theta_mean + 3 * theta_std, 20)
     plt.plot(theta_left, stats.norm.pdf(theta_left, theta_mean, theta_std))
     plt.grid()
     plt.xlabel('angle in degrees')
-    plt.ylabel('number of counts')
-    plt.title("Angle")
-    plt.show()
+    plt.ylabel('probability density')
+    plt.title(name+"-Angle")
+    #plt.show()
+    #plt.savefig("Graphs/"+name+"-Angle.jpg")
+    plt.close()
+
 
 if __name__ == "__main__":
-    x,y,theta = read_csv("Results.xlsx",sheet_number=2)
+
+    x,y,theta = read_csv("Results.xlsx",sheet_number=0)
     x,y,theta = remove_outliers(x,0.01,0.01), remove_outliers(y,0.01,0.01),remove_outliers(theta,0.01,0.01)
     x, y, theta = run_pca(x),run_pca(y),run_pca(theta)
     draw_gaussian(x,y,theta)
+
+    print(stats.chisquare(np.sort(x)))
 
