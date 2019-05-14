@@ -317,15 +317,7 @@ The general methods to perform the calibration are as follows.
 	20 measurements would be performed for each end point of the trajectory. Mean and standard deviation will be computed from the measurement. These measured values would be used to compute the accuracy and precision of the pose variation. 
 	
 \end{enumerate}
-
 \vspace{0.5cm}
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.2\linewidth ]{Extra/marker.png}
-	\caption{ Example of Aruco marker used for computer vision}
-\end{figure}
-
 
 \subsubsection{Computer Vision Algorithm}
 
@@ -352,14 +344,14 @@ The general methods to perform the calibration are as follows.
 		The scripts written for the experiment along with the documentation of each of the function are given in the following repository. (\href{https://github.com/njanirudh/SEE-Project}{https://github.com/njanirudh/SEE-Project})
 \end{enumerate}
 
-% \newpage
-% \begin{figure}[h]
-% 	\centering
-% 	\includegraphics[width=]{Extra/pipeline.png}
-% 	\caption{Computer vision algorithm pipeline}
-% \end{figure}
+\vspace{0.5cm}
 
-% \newpage
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.2\linewidth ]{Extra/marker.png}
+	\caption{ Example of Aruco marker used for computer vision}
+\end{figure}
+
 \includepdf{Extra/pipeline.png}
 
 \subsection{Observations}
@@ -455,7 +447,8 @@ The origin of the original map (grid sheet) that was considered was at the top-l
 \newpage
 \item
 The scatter plot of the end pose of the robot after it moved forward has been displayed in the figure below.
-
+It can be observed that there is a slight deviation of the robot on one side. This can be attributed to the 
+mechanical faults in the robot or uneven weight distribution.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.9\linewidth ]{Pose/straight.png}
@@ -497,6 +490,7 @@ The plot of the poses of the robot has been displayed in the figure below.
 	\caption{All Poses}
 \end{figure}
 
+
 \end{enumerate}
 
 \newpage
@@ -506,90 +500,75 @@ The plot of the poses of the robot has been displayed in the figure below.
 \Large
 The objective of this task is to characterise the observed behaviour from the previous experiment in terms of statistical parameters and estimate the distribution governing the spread of the stop positions.
 
-
 \subsection{Procedure}
 
-
 The data obtained from the previous experiment is used to fit to a Gaussian probability distribution by executing an algorithm in Python. The code used for this can be found in the github repository \href{https://github.com/njanirudh/SEE-Project/tree/dev}{https://github.com/njanirudh/SEE-Project/tree/dev}
-
+The general steps for statistical evaluating data are :-
+\begin{enumerate}
+	\item The extreme outliers in the data are removed by using the Chebyshev's outlier algorithms. 
+	\item Perform PCA on the x,y and the angle data for each of the three poses (start,forward,left,right). 
+	PCA will help in mean-centering the data while selecting the axis where the projection of the actual data is maximum. 
+	\item Chi-squared test is performed on the data to check if the data fits a gaussian distribution or not. 
+	Since Chi-squared test requires a minimum of 5 points, the number of bins selected for 20 observations is 4.
+	\item Python functions provided in the github repository are used to perform PCA of the data, chi-squared test and also generate the histograms given below.
+	
+\end{enumerate}
+	
 
 \subsection{Observations}
 		
 Given below are the curves for Gaussian fit from the observed data.
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.8\linewidth ]{Graphs/Forward-X.jpg}
-	\caption{Fit for X Coordinate - Forward}
-\end{figure}
+\includepdf{Graphs/start_merged.png}
+\includepdf{Graphs/forward_merged.png}
+\includepdf{Graphs/left_merged.png}
+\includepdf{Graphs/right_merged.png}
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.9\linewidth ]{Graphs/Forward-Y.jpg}
-	\caption{Fit for Y Coordinate - Forward}
-\end{figure}	
+The data obtained from the experiments performed can be used to measure the precision.
+Since the exact final position of the robot cannot be calculated using the data and the measurements available to us, the accuracy of the data cannot be found.
 
-\begin{figure}[H]
+\begin{table}[ht]				
 	\centering
-	\includegraphics[width=0.9\linewidth ]{Graphs/Forward-Angle.jpg}
-	\caption{Fit for angle - Forward}
-\end{figure}
+	\begin{tabular}{ | C{3cm} | C{3cm}|  C{3cm} | C{3cm} |} 
+		\hline
+		\textbf{Parameter} & \textbf{Forward} & \textbf{Right} & \textbf{Left}\\ 
+		\hline
+		Mean\_X(mm)  & 765.83 & 700.38 & 690.38  \\ 
+		\hline
+		Mean\_Y(mm)  & 335.11 & 520.14 & 171.27  \\  
+		\hline
+		Mean\_Theta(deg)  & 14.45 & -24.81 & 40.88  \\ 
+		\hline
+		Variance\_X(mm)  & $\pm$ 10.56 & $\pm$12.52 & $\pm$15.83 \\  
+		\hline
+		Variance\_Y(mm)  & $\pm$104.03 & $\pm$104.06 & $\pm$104.61  \\ 
+		\hline
+		Variance\_Theta(deg)  & $\pm$10.8 & $\pm$0.39 & $\pm$0.91  \\  
+		\hline
+	\end{tabular}
+	\caption{Observed Parameters}
+	\label{Tab:Tcr}
+\end{table}
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.8\linewidth ]{Graphs/Left-X.jpg}
-	\caption{Fit for X Coordinate - Left}
-\end{figure}
+\begin{enumerate}
+	\item
+	The observation in the table shows that the variance along y direction is more than along x direction when the robot moves in arc.
+	\item
+	The above is attributed to the fact that a small change in the angle
+	causes a bigger change in y direction, the further the robot drives.
+	Thus also the precision in x direction is better than in y.
+	\item
+	It can also be seen that the distance in x direction for the right arc
+	is bigger than for the left, while the distance in y is bigger for the
+	left arc. An explanation for this could be that the right wheel is rotating faster than the left wheel. This is also supported by the fact that the robot moves slightly to the left when programmed to move straight.
+\end{enumerate}
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.8\linewidth ]{Graphs/Left-Y.jpg}
-	\caption{Fit for Y Coordinate - Left}
-\end{figure}	
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.8\linewidth ]{Graphs/Left-Angle.jpg}
-	\caption{Fit for angle - Left}
-\end{figure}
+\subsection{Conclusion}
+An experiment was performed using LEGO NXT robot. 
+20 measurement of the pose were taken from a common start position and then after reaching an end position (straight,left,right).
+The measurements were plotted on the graph and it was concluded by performing a chi-squared test that the measurements follow a Gaussian distribution.  
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.8\linewidth ]{Graphs/Right-X.jpg}
-	\caption{Fit for X Coordinate - Right}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.8\linewidth ]{Graphs/Right-Y.jpg}
-	\caption{Fit for Y Coordinate - Right}
-\end{figure}	
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.8\linewidth ]{Graphs/Right-Angle.jpg}
-	\caption{Fit for angle - Right}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.8\linewidth ]{Graphs/Start-X.jpg}
-	\caption{Fit for X Coordinate - Start Position}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.8\linewidth ]{Graphs/Start-Y.jpg}
-	\caption{Fit for Y Coordinate - Start Position}
-\end{figure}	
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.8\linewidth ]{Graphs/Start-Angle.jpg}
-	\caption{Fit for angle - Start Position}
-\end{figure}
-
-When analysing the data with respect to the executed motions, the characteristic of the data that is established here Precision. Since we do not know the exact destination to which the robot is moving to, we would not be able to measure the accuracy with the current data.
 \end{document}
 
 
