@@ -10,10 +10,13 @@
 \usepackage{graphicx}
 \usepackage{array}
 \usepackage{float}
+\usepackage{pdfpages}
+
+\usepackage[raggedright]{titlesec}
 \usepackage[tmargin=3cm,bmargin=2.5cm,lmargin=1.1cm,rmargin=1.5cm]{geometry}
 \hypersetup{
 	colorlinks=true,
-	linkcolor=blue,
+	linkcolor=black,
 	filecolor=magenta,
 	urlcolor=cyan,
 }
@@ -23,6 +26,7 @@
 \subsectionfont{\Large}
 \subsubsectionfont{\Large}
 \paragraphfont{\large}
+
 
 \setcounter{secnumdepth}{5}
 
@@ -41,7 +45,7 @@
 	\textbf{\Large{Scientific Experimentation and Evaluation}}
 	}
 	
-\date{\color{blue}April 17, 2019}			
+\date{May 01, 2019}			
 \begin{document}
 
 \begin{titlepage}
@@ -55,10 +59,10 @@
 	\newpage
 
 
-\LARGE{\textbf{\color{blue}Manual Motion Observation}}
 
+\section{Task 1 : Manual Motion Observation}
 
-\section{Aim}
+\subsection{Aim}
 \Large
 The aim of this project is to construct a LEGO NXT differential drive robot and measure the observable end pose variation for three different trajectories: an arc to the left, driving straight and an arc to the right.
 \vspace{0.5cm}
@@ -66,11 +70,11 @@ The aim of this project is to construct a LEGO NXT differential drive robot and 
 The experiment of measuring the end pose was done by measuring the pose using aruco markers and Computer Vision.
    
 
-\section{Experimental Setup}
+\subsubsection{Experimental Setup}
 	
-	\subsection{Software Setup}
-		
-	\subsubsection{Software Installation}
+	\subsubsection{Software Setup}
+		\vspace{0.3cm}
+	\textbf{Software Installation}\\
 			
 		The following softwares were installed in the PC for driving the robot :
 			\vspace{0.3cm}
@@ -98,8 +102,8 @@ The experiment of measuring the end pose was done by measuring the pose using ar
 				\vspace{0.5cm}
 								
 			\end{enumerate}
-			
-			\subsubsection{Programming the robot}
+			\vspace{0.3cm}
+			\textbf{Programming the robot}
 	
 			\begin{enumerate}
 				\item
@@ -123,14 +127,14 @@ The experiment of measuring the end pose was done by measuring the pose using ar
 				  	\label{Tab:Tcr}
 				\end{table}
 		\item
-		The NXT Device was connected to the PC via a USB Cable. {\color{blue}The NXJ firmware was flashed into the device.} The modified code was compiled and run as an LeJOS NXT Program to create a .nxj file. This was automatically flashed into the NXT device that was connected to the PC.
+		The NXT Device was connected to the PC via a USB Cable. The NXJ firmware was flashed into the device. The modified code was compiled and run as an LeJOS NXT Program to create a .nxj file. This was automatically flashed into the NXT device that was connected to the PC.
 				
 				
 			\end{enumerate}
 			
 			
 	
-	\subsection{Hardware Setup}	
+	\subsubsection{Hardware Setup}	
 To reproduce the experiment the following equipments are required :
 \begin{enumerate}
     \item
@@ -151,15 +155,33 @@ The general steps to setup the experiment are as following :
     \item
     Place the White A0 sheet on a flat surface.  Try to remove any bends in the sheet and keep the paper as flat as possible. This will be called the 'map' on which the robot will move on. The measurement system is made of the robot, scale, camera, aruco markers and a paper. 
     \item
-    Draw the template drawing of the "floor space" taken by the robot as shown in the {\color{blue}figure}. Concept of 'Behavior-shaping constraint'\footnote{\color{blue}Behavior shaping constraint : It is a type of design constraint to prevent the user from using the system in a way that it is not intended to be used in. In the case of the template given, the triangle prevents the robot to be placed in the reverse direction.} is used to prevent wrong initial placement of the robot.
+    Draw the template drawing of the "floor space" taken by the robot as shown in the figure. Concept of 'Behavior-shaping constraint'\footnote{Behavior shaping constraint : It is a type of design constraint to prevent the user from using the system in a way that it is not intended to be used in. In the case of the template given, the triangle prevents the robot to be placed in the reverse direction.} is used to prevent wrong initial placement of the robot.
     
     
     \begin{figure}[H]
 	\centering
-    \includegraphics[width=0.6\linewidth ]{Template.jpeg}
-    \caption{ Template of the Map}
+    \includegraphics[width=0.6\linewidth ]{Apparatus/map_small.png}
+    \caption{ Template of the map}
+    \end{figure}    
+      
+    \begin{figure}[H]
+    	\centering
+    	\includegraphics[width=0.6\linewidth ]{Apparatus/camera_placement.png}
+    	\caption{Top view of the experimental setup without camera}
     \end{figure}
-
+    
+    \begin{figure}[H]
+    	\centering
+    	\includegraphics[width=0.6\linewidth ]{Apparatus/experiment_apparatus_01_small.png}
+    	\caption{Top view of the experimental setup}
+    \end{figure}
+    
+    \begin{figure}[H]
+     	\centering
+     	\includegraphics[width=0.55\linewidth ]{Apparatus/apparatus_front_view.png}
+     	\caption{Front view of the experimental setup}
+    \end{figure}
+    
 	\item
 	Four aruco markers of different ids are used to find the corners of the grid sheet. The aruco markers are aligned such that the first corner of the marker which is detected by the CV algorithm overlaps with the corner of the sheet.
 	\item
@@ -171,11 +193,11 @@ The general steps to setup the experiment are as following :
     \item
     We assumed that the driving axle is towards the front(leading edge) of the robot and that the robot origin lies in the centre of the driving axle.
     \item
-    The two aruco markers on the robot are placed as ahown in the figure {\color{blue}in such a way that one of the markers lies directly on top of the origin of the robot.}
+    The two aruco markers on the robot are placed as ahown in the figure in such a way that one of the markers lies directly on top of the origin of the robot.
     \item
-    Place the robot on the A0 sheet over the marked template {\color{blue}in such a way that the castor wheel is turned outwards from the robot.}
+    Place the robot on the A0 sheet over the marked template in such a way that the castor wheel is turned outwards from the robot.
     \item
-	The measurands are the {\color{blue}coordinates of the robot's markers on the camera.}
+	The measurands are the coordinates of the robot's markers on the camera.
     
 \end{enumerate}
 \vspace{0.5cm}
@@ -184,13 +206,13 @@ The reference images of the DUT and the proposed marker tracking visualization a
 
 \begin{figure}[h]
 	\centering
-\includegraphics[width=0.9\linewidth ]{pose.jpeg}
+\includegraphics[width=0.9\linewidth ]{Apparatus/pose.jpeg}
 \caption{ Views of the DUT}
 \end{figure}
 
-\subsection{\color{blue}Camera Calibration}
+\subsubsection{Camera Calibration}
 
-{\color{blue}
+
 Calibration in computer vision is the method to find the intrinsic and extrinsic parameters of a particular camera. The intrinsic parameters of a camera deals with the physical qualities of the camera like focal length , skew , distorsion etc. Whereas, the extrinsic parameters of the camera deals with finding the pose of the external world with respect to the camera.\\
 
 The general methods to perform the calibration are as follows.
@@ -216,7 +238,7 @@ The general methods to perform the calibration are as follows.
 
 \end{enumerate}
 
-\section{General Terms Formalization}
+\subsection{General Terms Formalization}
 
 
 	\begin{itemize}
@@ -274,9 +296,9 @@ The general methods to perform the calibration are as follows.
 			Find the pose of the robot by using the Computer Vision algorithm on the images captured.
 		\end{itemize}
 \end{itemize}
-}
-\section{Procedure}
-	\subsection{Experimental Steps}
+
+\subsection{Procedure}
+	\subsubsection{Experimental Steps}
 	
 \begin{enumerate}
 	\item
@@ -292,20 +314,12 @@ The general methods to perform the calibration are as follows.
 	\item
 	The initial pose and the final pose can be found by CV and position and pose in the required form can be extracted.
 	\item
-	20 measurements would be performed for each {\color{blue}end point of the trajectory}. Mean and standard deviation will be computed from the measurement. These measured values would be used to compute the accuracy and precision of the pose variation. 
+	20 measurements would be performed for each end point of the trajectory. Mean and standard deviation will be computed from the measurement. These measured values would be used to compute the accuracy and precision of the pose variation. 
 	
 \end{enumerate}
-
 \vspace{0.5cm}
 
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.2\linewidth ]{marker.png}
-	\caption{ Example of Aruco marker used for computer vision}
-\end{figure}
-
-
-\subsection{Computer Vision Algorithm}
+\subsubsection{Computer Vision Algorithm}
 
 \begin{enumerate}
 		\item
@@ -317,7 +331,7 @@ The general methods to perform the calibration are as follows.
 			\item
 			The aruco markers on the four corners are then used to perform perspective transformation. This helps in removing minor skews in the image.
 			\item
-			Using the four corners of the sheet, the area of the sheet is cropped.			
+			The four markers on the corners are then used to crop the image.			
 		\end{enumerate}
 		\vspace{0.3cm}
 		\item
@@ -327,12 +341,22 @@ The general methods to perform the calibration are as follows.
 		\item
 		The marker positions are in pixels since it is directly calculated from the image. A transformation is performed on the pixel coordinates to convert it into 'millimeter' coordinates of the map.
 		\item
-		The scripts that were written for the experiment along with the documentation of each of the function are given in the following repository. (\href{https://github.com/njanirudh/SEE-Project}{https://github.com/njanirudh/SEE-Project})
+		The scripts written for the experiment along with the documentation of each of the function are given in the following repository. (\href{https://github.com/njanirudh/SEE-Project}{https://github.com/njanirudh/SEE-Project})
 \end{enumerate}
 
-\section{Observations}
+\vspace{0.5cm}
 
-\subsection{Problems}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.2\linewidth ]{Extra/marker.png}
+	\caption{ Example of Aruco marker used for computer vision}
+\end{figure}
+
+\includepdf{Extra/pipeline.png}
+
+\subsection{Observations}
+
+\subsubsection{Problems}
 
 \begin{enumerate}
 	\item
@@ -360,12 +384,12 @@ The general methods to perform the calibration are as follows.
 	\item
 	Mechanical adjustments performed on the DUT during the experiment affected the end poses.
 	\item
-	{\color{blue}Pressing the start button of the robot at its start position also caused slight changes in the start pose.}
+	Pressing the start button of the robot at its start position also caused slight changes in the start pose.
 	\item
 	Errors that occured due to the markers are given below:
 	\begin{enumerate}
 		\item
-		{\color{blue}A major source of error in the case of this experiment is that the compensation for parallax error when considering the markers is not done. This might cause the actual position of the marker corners to be slightly deviated from the result given without the parallax compensation.}
+		A major source of error in the case of this experiment is that the compensation for parallax error when considering the markers is not done. This might cause the actual position of the marker corners to be slightly deviated from the result given without the parallax compensation.
 		
 		\item
 		The marker placed at the front of the robot gets hidden at times when the robot moves to the left. This prevents the camera from detecting the marker.
@@ -374,7 +398,7 @@ The general methods to perform the calibration are as follows.
 		
 		\begin{figure}[h]
 			\centering
-			\includegraphics[width=0.35\linewidth ]{hidden_marker.png}
+			\includegraphics[width=0.35\linewidth ]{Extra/hidden_marker.png}
 			\caption{ Hidden marker}
 		\end{figure}
 		
@@ -385,7 +409,7 @@ The general methods to perform the calibration are as follows.
 		
 		\begin{figure}[H]
 			\centering
-			\includegraphics[width=0.35\linewidth ]{marker_detection_error.png}
+			\includegraphics[width=0.35\linewidth ]{Extra/marker_detection_error.png}
 			\caption{Bounding Box Error}
 		\end{figure}
 		
@@ -394,7 +418,7 @@ The general methods to perform the calibration are as follows.
 		
 		\begin{figure}[H]
 			\centering
-			\includegraphics[width=0.45\linewidth ]{skew.png}
+			\includegraphics[width=0.45\linewidth ]{Extra/skew.png}
 			\caption{Skewed Marker}
 		\end{figure}
 		
@@ -406,7 +430,7 @@ The general methods to perform the calibration are as follows.
 
 
 \newpage
-\subsection{Data Visualisation}
+\subsubsection{Data Visualisation}
 
 The origin of the original map (grid sheet) that was considered was at the top-left corner. However, the plots that have been displayed in this section have the origin in the bottom-left corner and hence the original images have been mirrored to fit the plot axes.
 
@@ -416,19 +440,22 @@ The origin of the original map (grid sheet) that was considered was at the top-l
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.9\linewidth ]{front.png}
+	\includegraphics[width=0.9\linewidth ]{Pose/all.png}
 	\caption{Initial Pose}
 \end{figure}
 
 \newpage
 \item
 The scatter plot of the end pose of the robot after it moved forward has been displayed in the figure below.
-
+It can be observed that there is a slight deviation of the robot on one side. This can be attributed to the 
+mechanical faults in the robot or uneven weight distribution.
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.9\linewidth ]{forward.png}
+	\includegraphics[width=0.9\linewidth ]{Pose/straight.png}
 	\caption{End Pose - Forward}
 \end{figure}
+
+
 
 \newpage
 \item
@@ -436,7 +463,7 @@ The scatter plot of the end pose of the robot after it moved in the left arc has
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.9\linewidth ]{left.png}
+	\includegraphics[width=0.9\linewidth ]{Pose/left.png}
 	\caption{End Pose - Left}
 \end{figure}
 
@@ -447,16 +474,100 @@ The scatter plot of the end pose of the robot after it moved in the right arc ha
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.9\linewidth ]{right.png}
+	\includegraphics[width=0.9\linewidth ]{Pose/right.png}
 	\caption{End Pose - Right}
 \end{figure}
 
+
+
+\newpage
+\item
+The plot of the poses of the robot has been displayed in the figure below.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\linewidth ]{Pose/all_wo_bg.png}
+	\caption{All Poses}
+\end{figure}
+
+
+\end{enumerate}
+
+\newpage
+\section{Task 2 : Statistical Evaluation}
+
+\subsection{Aim}
+\Large
+The objective of this task is to characterise the observed behaviour from the previous experiment in terms of statistical parameters and estimate the distribution governing the spread of the stop positions.
+
+\subsection{Procedure}
+
+The data obtained from the previous experiment is used to fit to a Gaussian probability distribution by executing an algorithm in Python. The code used for this can be found in the github repository \href{https://github.com/njanirudh/SEE-Project/tree/dev}{https://github.com/njanirudh/SEE-Project/tree/dev}
+The general steps for statistical evaluating data are :-
+\begin{enumerate}
+	\item The extreme outliers in the data are removed by using the Chebyshev's outlier algorithms. 
+	\item Perform PCA on the x,y and the angle data for each of the three poses (start,forward,left,right). 
+	PCA will help in mean-centering the data while selecting the axis where the projection of the actual data is maximum. 
+	\item Chi-squared test is performed on the data to check if the data fits a gaussian distribution or not. 
+	Since Chi-squared test requires a minimum of 5 points, the number of bins selected for 20 observations is 4.
+	\item Python functions provided in the github repository are used to perform PCA of the data, chi-squared test and also generate the histograms given below.
+	
+\end{enumerate}
+	
+
+\subsection{Observations}
+		
+Given below are the curves for Gaussian fit from the observed data.
+
+\includepdf{Graphs/start_merged.png}
+\includepdf{Graphs/forward_merged.png}
+\includepdf{Graphs/left_merged.png}
+\includepdf{Graphs/right_merged.png}
+
+The data obtained from the experiments performed can be used to measure the precision.
+Since the exact final position of the robot cannot be calculated using the data and the measurements available to us, the accuracy of the data cannot be found.
+
+\begin{table}[ht]				
+	\centering
+	\begin{tabular}{ | C{3cm} | C{3cm}|  C{3cm} | C{3cm} |} 
+		\hline
+		\textbf{Parameter} & \textbf{Forward} & \textbf{Right} & \textbf{Left}\\ 
+		\hline
+		Mean\_X(mm)  & 765.83 & 700.38 & 690.38  \\ 
+		\hline
+		Mean\_Y(mm)  & 335.11 & 520.14 & 171.27  \\  
+		\hline
+		Mean\_Theta(deg)  & 14.45 & -24.81 & 40.88  \\ 
+		\hline
+		Variance\_X(mm)  & $\pm$ 10.56 & $\pm$12.52 & $\pm$15.83 \\  
+		\hline
+		Variance\_Y(mm)  & $\pm$104.03 & $\pm$104.06 & $\pm$104.61  \\ 
+		\hline
+		Variance\_Theta(deg)  & $\pm$10.8 & $\pm$0.39 & $\pm$0.91  \\  
+		\hline
+	\end{tabular}
+	\caption{Observed Parameters}
+	\label{Tab:Tcr}
+\end{table}
+
+\begin{enumerate}
+	\item
+	The observation in the table shows that the variance along y direction is more than along x direction when the robot moves in arc.
+	\item
+	The above is attributed to the fact that a small change in the angle
+	causes a bigger change in y direction, the further the robot drives.
+	Thus also the precision in x direction is better than in y.
+	\item
+	It can also be seen that the distance in x direction for the right arc
+	is bigger than for the left, while the distance in y is bigger for the
+	left arc. An explanation for this could be that the right wheel is rotating faster than the left wheel. This is also supported by the fact that the robot moves slightly to the left when programmed to move straight.
 \end{enumerate}
 
 
-
-
-
+\subsection{Conclusion}
+An experiment was performed using LEGO NXT robot. 
+20 measurement of the pose were taken from a common start position and then after reaching an end position (straight,left,right).
+The measurements were plotted on the graph and it was concluded by performing a chi-squared test that the measurements follow a Gaussian distribution.  
 
 \end{document}
 

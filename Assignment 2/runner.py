@@ -22,5 +22,5 @@ if __name__ == "__main__" :
 
         output = finder.process_image(rotate)
         if output is not None:
-            cv2.imwrite("Results/Right/" + os.path.basename(files), output)
+            cv2.imwrite("Results_1/Right/" + os.path.basename(files), output)
             print(finder.get_output())

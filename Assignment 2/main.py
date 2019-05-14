@@ -20,7 +20,7 @@ class MarkerFinder :
 
         # Setting parameters for finding the Aruco Marker.
         self.parameters = aruco.DetectorParameters_create()
-        self.parameters.adaptiveThreshWinSizeStep = 2
+        self.parameters.adaptiveThreshWinSizeStep = 1
         self.parameters.adaptiveThreshConstant = 10
         self.parameters.cornerRefinementMethod = cv2.aruco.CORNER_REFINE_CONTOUR
 
@@ -40,13 +40,14 @@ class MarkerFinder :
         self.sheet_tr = tr
         self.sheet_br = br
 
-    def calibrate_camera(self,t_vec , r_vec):
+    def calibrate_camera(self,t_vec , r_vec,camera_mat):
         """
         Setting the calibration parameters of the camera
         :param t_vec: Translation vector
         :param r_vec: Rotation vector
         :return:  None
         """
+        self.camera_mat = camera_mat
         self.t_vec = t_vec
         self.r_vec = r_vec
 
@@ -57,6 +58,7 @@ class MarkerFinder :
         :param v_id_back: Robot back marker id
         :return: None
         """
+
         self.vehicle_id_f = v_id_front
         self.vehicle_id_b = v_id_back
 
@@ -72,6 +74,7 @@ class MarkerFinder :
         # lists of ids and the corners belonging to each marker
         corners, ids, rejectedImgPoints = aruco.detectMarkers(gray, self.aruco_dict,
                                                               parameters=self.parameters)
+        print(ids)
         if np.all(ids != None):
 
             try:
@@ -122,6 +125,11 @@ class MarkerFinder :
                                                         v_corners[index_vehicle_f][0][2],
                                                         v_corners[index_vehicle_f][0][3])
 
+                    # Removing errors using intrensic and extrensic matrix
+                    warped = cv2.undistort(warped, self.camera_mat)
+                    warped = cv2.projectPoints([pnts, self.b_marker_centre, self.f_marker_centre], self.r_vec,
+                                               self.t_vec, self.camera_mat)
+
                     # Drawing the line from origin to robot markers
                     cv2.line(warped,(0,0),self.f_marker_centre,(255,0,255),3)
                     cv2.line(warped, (0,0),self.b_marker_centre, (255, 255, 255),3)
@@ -162,15 +170,15 @@ class MarkerFinder :
 
 if __name__ == "__main__":
 
-    test_img = cv2.imread("Markers/test_05.jpg")
+    test_img = cv2.imread("/home/anirudh/Desktop/SEE/SEE-Project/Assignment 03/images/Photos_downloaded_by_AirDroid/IMG_20190505_114809__01.jpg")
 
     finder = MarkerFinder()
     finder.set_sheet_corner_id(0,1,2,3)
     finder.set_vehicle_marker_id(46,47)
 
     image = finder.process_image(test_img)
-    cv2.imwrite("Results/Forward/frame_1.jpg", image)
-    finder.get_output()
+    cv2.imwrite("/home/anirudh/Desktop/SEE/SEE-Project/Assignment 03/images/map.jpg", image)
+    #finder.get_output()
 
     # webcam = WebcamVideoStream().start()
     #
