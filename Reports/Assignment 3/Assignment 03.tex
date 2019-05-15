@@ -45,7 +45,7 @@
 	\textbf{\Large{Scientific Experimentation and Evaluation}}
 	}
 	
-\date{May 01, 2019}			
+\date{May 08, 2019}			
 \begin{document}
 
 \begin{titlepage}
@@ -506,10 +506,10 @@ The data obtained from the previous experiment is used to fit to a Gaussian prob
 The general steps for statistical evaluating data are :-
 \begin{enumerate}
 	\item The extreme outliers in the data are removed by using the Chebyshev's outlier algorithms. 
-	\item Perform PCA on the x,y and the angle data for each of the three poses (start,forward,left,right). 
+	\item Perform PCA on the x,y and the angle data for each of the three poses (start, forward, left and right). 
 	PCA will help in mean-centering the data while selecting the axis where the projection of the actual data is maximum. 
 	\item Chi-squared test is performed on the data to check if the data fits a gaussian distribution or not. 
-	Since Chi-squared test requires a minimum of 5 points, the number of bins selected for 20 observations is 4.
+	Since Chi-squared test requires a minimum of 5 points, the number of bins selected for 20 observations is 5.
 	\item Python functions provided in the github repository are used to perform PCA of the data, chi-squared test and also generate the histograms given below.
 	
 \end{enumerate}
@@ -519,10 +519,28 @@ The general steps for statistical evaluating data are :-
 		
 Given below are the curves for Gaussian fit from the observed data.
 
-\includepdf{Graphs/start_merged.png}
-\includepdf{Graphs/forward_merged.png}
-\includepdf{Graphs/left_merged.png}
-\includepdf{Graphs/right_merged.png}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\linewidth ]{Graphs/start.png}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\linewidth ]{Graphs/straight.png}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\linewidth ]{Graphs/left.png}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\linewidth ]{Graphs/right.png}
+\end{figure}
+
+
 
 The data obtained from the experiments performed can be used to measure the precision.
 Since the exact final position of the robot cannot be calculated using the data and the measurements available to us, the accuracy of the data cannot be found.
@@ -566,7 +584,7 @@ Since the exact final position of the robot cannot be calculated using the data 
 
 \subsection{Conclusion}
 An experiment was performed using LEGO NXT robot. 
-20 measurement of the pose were taken from a common start position and then after reaching an end position (straight,left,right).
+20 measurement of the pose were taken from a common start position and then after reaching an end position (straight, left and right).
 The measurements were plotted on the graph and it was concluded by performing a chi-squared test that the measurements follow a Gaussian distribution.  
 
 \end{document}
